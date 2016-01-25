@@ -12,13 +12,13 @@
 	<mvc:annotation-driven />
 
 	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<!-- <mvc:resources mapping="/css/**" location="/css/" /> -->
 
 	<!-- Map simple view name such as "test" into /WEB-INF/test.jsp -->
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/view/" />
-		<property name="suffix" value=".jsp" />
-	</bean>
+	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
+		<property name="prefix" value="/WEB-INF/view/" /> <property name="suffix" 
+		value=".jsp" /> </bean> -->
+
 
 	<!-- Scan classpath for annotations (eg: @Service, @Repository etc) -->
 	<context:component-scan base-package="com.lamare.meetlog" />
@@ -59,14 +59,21 @@
 
 	<!-- Activates annotation based transaction management -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
-	
-	<!-- Tiles configuration --> 
-    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
-        <property name="definitions">
-            <list>
-                <value>/WEB-INF/layouts/layouts.xml</value>
-            </list>
-        </property>
-    </bean>
-    
+
+	<!-- Tiles configuration -->
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>WEB-INF/layouts/layouts.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles3.TilesView" />
+	</bean>
+
 </beans>

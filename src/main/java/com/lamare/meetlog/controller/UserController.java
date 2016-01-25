@@ -26,8 +26,14 @@ public class UserController {
 	public ModelAndView ListUsers(){
 		ModelAndView modelAndView = new ModelAndView("index");
 		List<User> users = userService.getListAllUsers();
+		modelAndView.addObject("title", "Welcome");
 		modelAndView.addObject("users", users);
 		
 		return modelAndView; 
+	}
+	
+	@RequestMapping(value="about",method = RequestMethod.GET)
+	public ModelAndView about(){
+		return new ModelAndView("about");
 	}
 }
