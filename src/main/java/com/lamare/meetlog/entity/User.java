@@ -5,70 +5,79 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+// TODO: Auto-generated Javadoc
 /**
  * The Class User.
  */
 @Entity
 @Table(name = "user")
 public class User {
-	
+
 	/** The id. */
 	@Id
 	@GeneratedValue
 	private int id;
-	
+
 	/** The pseudo. */
-	private String pseudo;
-	
+	private String username;
+
 	/** The password. */
 	private String password;
-	
-	
+
 	/** The mail. */
 	private String mail;
+
+	/** The enabled. */
+	private boolean enabled;
 
 	/**
 	 * Instantiates a new user.
 	 */
-	public User(){
+	public User() {
 		super();
 	}
-	
+
 	/**
 	 * Instantiates a new user.
 	 *
-	 * @param id the id
-	 * @param pseudo the pseudo
-	 * @param password the password
-	 * @param mail the mail
+	 * @param id
+	 *            the id
+	 * @param pseudo
+	 *            the pseudo
+	 * @param password
+	 *            the password
+	 * @param mail
+	 *            the mail
 	 */
-	public User(int id,String pseudo, String password,String mail){
+	public User(int id, String pseudo, String password, String mail) {
 		super();
 		this.id = id;
-		this.pseudo = pseudo;
+		this.username = pseudo;
 		this.password = password;
 		this.mail = mail;
 	}
-	
+
 	/**
 	 * Instantiates a new user.
 	 *
-	 * @param user the user
+	 * @param user
+	 *            the user
 	 */
-	public User(User user){
+	public User(User user) {
 		super();
 		this.id = user.getId();
-		this.pseudo = user.getPseudo();
+		this.username = user.getUsername();
 		this.password = user.getPassword();
 		this.mail = user.getMail();
 	}
-	
-	//Getters et Setters.
-	
+
+	// Getters et Setters.
+
 	/**
 	 * Sets the mail.
 	 *
-	 * @param mail the new mail
+	 * @param mail
+	 *            the new mail
 	 */
 	public void setMail(String mail) {
 		this.mail = mail;
@@ -95,7 +104,8 @@ public class User {
 	/**
 	 * Sets the id.
 	 *
-	 * @param id the new id
+	 * @param id
+	 *            the new id
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -106,17 +116,18 @@ public class User {
 	 *
 	 * @return the pseudo
 	 */
-	public String getPseudo() {
-		return pseudo;
+	public String getUsername() {
+		return username;
 	}
 
 	/**
 	 * Sets the pseudo.
 	 *
-	 * @param pseudo the new pseudo
+	 * @param pseudo
+	 *            the new pseudo
 	 */
-	public void setPseudo(String pseudo) {
-		this.pseudo = pseudo;
+	public void setUsername(String pseudo) {
+		this.username = pseudo;
 	}
 
 	/**
@@ -131,7 +142,8 @@ public class User {
 	/**
 	 * Sets the password.
 	 *
-	 * @param password the new password
+	 * @param password
+	 *            the new password
 	 */
 	public void setPassword(String password) {
 		this.password = password;
@@ -144,6 +156,26 @@ public class User {
 	 */
 	@Override
 	public String toString() {
-		return "User [id=" + this.id + ", pseudo=" + this.pseudo + ", password=" + this.password + ", super="+ super.toString() +"]";
+		return "User [id=" + this.id + ", pseudo=" + this.username + ", password=" + this.password + ", super="
+				+ super.toString() + "]";
+	}
+
+	/**
+	 * Checks if is enabled.
+	 *
+	 * @return true, if is enabled
+	 */
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	/**
+	 * Sets the enabled.
+	 *
+	 * @param enabled
+	 *            the new enabled
+	 */
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 }

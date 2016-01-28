@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,4 +27,13 @@ public class UserDao {
 		List<User> users = (List<User>) session.createQuery("FROM User").list();
 		return users;
 	}
+	
+	@Transactional
+	public User findUserByPseudo(String pseudo){
+		pseudo = pseudo.trim();
+		Session session = sessionFactory.getCurrentSession();
+		User user = (User) session.createCriteria(User.class).add(Restrictions.like("pseudo", pseudo)).uniqueResult();
+		return user;
+	}
+	
 }
